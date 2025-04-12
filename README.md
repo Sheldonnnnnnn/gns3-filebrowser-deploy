@@ -26,8 +26,8 @@ ansible-gns3-filebrowser/
 │   │   └── tasks/
 │   │       └── main.yml             # Tâches pour GNS3 Server
 │   └── filebrowser/
-│   |   └── tasks/
-│   |       └── main.yml            # Tâches pour File Browser
+│   │   └── tasks/
+│   │       └── main.yml             # Tâches pour File Browser
 │   └── nginx/
 │       └── tasks/
 │           └── main.yml            # Tâches pour nginx
