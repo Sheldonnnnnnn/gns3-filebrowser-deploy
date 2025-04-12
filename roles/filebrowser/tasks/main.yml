@@ -1,0 +1,47 @@
+---
+# roles/filebrowser/tasks/main.yml
+
+- name: Download File Browser binary
+  get_url:
+    url: https://github.com/filebrowser/filebrowser/releases/latest/download/linux-amd64-filebrowser.tar.gz
+    dest: /tmp/filebrowser.tar.gz
+
+- name: Extract File Browser
+  unarchive:
+    src: /tmp/filebrowser.tar.gz
+    dest: /usr/local/bin/
+    remote_src: yes
+    extra_opts: [--strip-components=1]
+
+- name: Ensure File Browser is executable
+  file:
+    path: /usr/local/bin/filebrowser
+    mode: '0755'
+    state: file
+
+- name: Create directory for File Browser data
+  file:
+    path: "{{ filebrowser_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Create File Browser systemd service
+  copy:
+    dest: /etc/systemd/system/filebrowser.service
+    content: |
+      [Unit]
+      Description=File Browser Web File Manager
+      After=network.target
+
+      [Service]
+      ExecStart=/usr/local/bin/filebrowser -r {{ filebrowser_dir }} -p {{ filebrowser_port }} --address 0.0.0.0
+      Restart=always
+      User=root
+      WorkingDirectory=/root
+      Environment=HOME=/root
+
+      [Install]
+      WantedBy=multi-user.target
+  notify:
+    - Reload systemd
+    - Enable and start File Browser
