@@ -1,0 +1,55 @@
+---
+# roles/gns3/tasks/main.yml
+
+- name: Enable universe and multiverse repositories
+  shell: |
+    add-apt-repository universe -y
+    add-apt-repository multiverse -y
+    add-apt-repository ppa:gns3/ppa -y
+    apt update
+  args:
+    executable: /bin/bash
+
+- name: Install GNS3 server and dependencies
+  apt:
+    name:
+      - gns3-server
+      - qemu-system-x86
+      - qemu-utils
+      - qemu-kvm
+      - libvirt-daemon-system
+      - libvirt-clients
+      - bridge-utils
+      - python3-pip
+      - wireshark
+      - net-tools
+    state: present
+    update_cache: yes
+
+- name: Remove gns3-gui if installed
+  apt:
+    name: gns3-gui
+    state: absent
+
+- name: Create GNS3 systemd service
+  copy:
+    dest: /etc/systemd/system/gns3server.service
+    content: |
+      [Unit]
+      Description=GNS3 Server
+      After=network.target
+
+      [Service]
+      Type=simple
+      User=root
+      WorkingDirectory=/root
+      ExecStart=/usr/bin/gns3server --host 0.0.0.0 --port {{ gns3_port }}
+      Restart=on-failure
+      RestartSec=5s
+      Environment=HOME=/root
+
+      [Install]
+      WantedBy=multi-user.target
+  notify:
+    - Reload systemd
+    - Enable and start GNS3
