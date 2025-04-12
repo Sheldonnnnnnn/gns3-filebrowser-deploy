@@ -11,3 +11,4 @@
   roles:
     - { role: gns3, when: gns3_install | default(true) }
     - { role: filebrowser, when: filebrowser_install | default(true) }
+    - { role: nginx, when: nginx_install | default(true) }
