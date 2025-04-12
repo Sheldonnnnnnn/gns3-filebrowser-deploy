@@ -11,6 +11,6 @@ Ce projet permet de déployer en une seule commande un serveur GNS3 et un gestio
 - Systemd
 - Ubuntu 24.04
 
-## 🚀 Commande de lancement
+## Commande de lancement
 ```bash
 ansible-playbook -i hosts.ini deploy_gns3_filebrowser.yml
