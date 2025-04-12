@@ -26,8 +26,11 @@ ansible-gns3-filebrowser/
 │   │   └── tasks/
 │   │       └── main.yml             # Tâches pour GNS3 Server
 │   └── filebrowser/
+│   |   └── tasks/
+│   |       └── main.yml            # Tâches pour File Browser
+│   └── nginx/
 │       └── tasks/
-│           └── main.yml            # Tâches pour File Browser
+│           └── main.yml            # Tâches pour nginx
 └── .gitignore                       # Pour exclure fichiers sensibles
 ```
 
@@ -41,12 +44,17 @@ ansible-playbook -i hosts.ini deploy_gns3_filebrowser.yml
 
 ### 🔀 Lancer uniquement GNS3 Server
 ```bash
-ansible-playbook -i hosts.ini deploy_gns3_filebrowser.yml -e "filebrowser_install=false"
+ansible-playbook -i hosts.ini deploy_gns3_filebrowser.yml -e "gns3_install=true"
 ```
 
 ### 🔀 Lancer uniquement File Browser
 ```bash
-ansible-playbook -i hosts.ini deploy_gns3_filebrowser.yml -e "gns3_install=false"
+ansible-playbook -i hosts.ini deploy_gns3_filebrowser.yml -e "filebrowser_install=true"
+```
+
+### 🔀 Lancer l'installation de NGINX avec reverse proxy -> file browser
+```bash
+ansible-playbook -i hosts.ini deploy_gns3_filebrowser.yml -e "nginx_install=true"
 ```
 
 ---
