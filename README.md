@@ -1,7 +1,5 @@
 # gns3-filebrowser-deploy
 
-# 📦 Projet Ansible : Déploiement GNS3 Server + File Browser
-
 Ce projet permet de déployer automatiquement un serveur GNS3 et/ou File Browser sur un VPS Ubuntu 24.04 à l'aide d'Ansible. Il est organisé en rôles pour un déploiement modulable.
 
 ---
@@ -82,6 +80,6 @@ Ajout d'un reverse proxy avec NGINX + HTTPS via Certbot pour sécuriser l'accès
 
 ## 🧠 Créateur
 
-Projet conçu par **Dani** pour déployer une stack réseau auto-hébergée, portable et propre.  
+Projet conçu par moi pour déployer une stack réseau auto-hébergée, portable et propre.  
 Compatible avec Hetzner, Proxmox ou tout VPS Ubuntu 24.04.
 
