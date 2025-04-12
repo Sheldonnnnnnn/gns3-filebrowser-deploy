@@ -15,6 +15,7 @@ Ce projet permet de déployer automatiquement un serveur GNS3 et/ou File Browser
 ---
 
 ##  Arborescence du projet
+Ci-dessous l'arborescence du projet avec l'organisation pour le lancement de rôle
 
 ```bash
 ansible-gns3-filebrowser/
@@ -31,7 +32,7 @@ ansible-gns3-filebrowser/
 │   └── nginx/
 │       └── tasks/
 │           └── main.yml            # Tâches pour nginx
-└── .gitignore                       # Pour exclure fichiers sensibles
+└── .gitignore                     
 ```
 
 ---
