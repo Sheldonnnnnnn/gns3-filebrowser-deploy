@@ -14,7 +14,7 @@ Ce projet permet de déployer automatiquement un serveur GNS3 et/ou File Browser
 
 ---
 
-## 🗂 Arborescence du projet
+##  Arborescence du projet
 
 ```bash
 ansible-gns3-filebrowser/
@@ -63,18 +63,12 @@ filebrowser_dir: /root/dossier_fileBrowser
 
 ---
 
-## 🧾 Exemple de hosts.ini
+##  Exemple de hosts.ini
 
 ```ini
 [gns3]
 192.0.2.10 ansible_user=root
 ```
-
----
-
-## 🛡 Prochaine étape (bonus)
-
-Ajout d'un reverse proxy avec NGINX + HTTPS via Certbot pour sécuriser l'accès File Browser.
 
 ---
 
